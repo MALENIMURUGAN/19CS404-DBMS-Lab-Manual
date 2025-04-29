@@ -68,7 +68,7 @@ Hospital
 
 - **Billing**: BillingID (PK), AppointmentID (FK), Amount, Payment Date, Payment Method, Payment Status
 
-...
+
 
 ## Relationships and Constraints:Here is the section in your requested format:
 
@@ -92,12 +92,12 @@ Hospital
 
 - **Department — "Supervises" — Appointment**  
   *(Cardinality: 1:M, Participation: Optional on Appointment side)*
-...
+
 
 ## Extension (Prerequisite / Billing):
 Billing is modeled as a separate entity linked via a 1:1 relationship to Appointment, ensuring that each appointment has one and only one corresponding billing entry. It captures payment details such as amount, method, date, and status to support financial tracking and insurance processing.
 
-## Design Choices:Entities were selected based on real-world objects involved in hospital workflows.
+## Design Choices:
 In designing the hospital database, the relationships were structured to support normalization, reduce redundancy, and provide flexibility for querying. Each relationship reflects a logical real-world connection, and the cardinality and participation constraints were defined based on how entities interact with one another. Billing was modeled as a separate entity to maintain a clear separation of financial data, ensuring precise tracking of payments and appointments. Additionally, the inclusion of department supervision over appointments reflects real-life administrative oversight, enhancing the completeness and reliability of the database model.
 
 ## RESULT:
