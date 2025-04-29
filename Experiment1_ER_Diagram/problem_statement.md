@@ -45,28 +45,60 @@ Design a database for patient management, appointments, medical records, and bil
    - Why you chose the entities and relationships.
    - How you modeled prerequisites or billing.
 
-# ER Diagram Submission - Student Name
+# ER Diagram Submission - Maleni M
 
 ## Scenario Chosen:
-University / Hospital (choose one)
+Hospital 
 
 ## ER Diagram:
-![ER Diagram](er_diagram.png)
+![image](https://github.com/user-attachments/assets/9ef88ca8-9433-4f17-bfe9-5667c66e62af)
+
 
 ## Entities and Attributes:
-- Entity1: Attributes
-- Entity2: Attributes
+
+- **Patient**: PatientID (PK), Full Name, Date of Birth, Gender, Address, Phone Number, Email, Insurance Details
+
+- **Doctor**: DoctorID (PK), Full Name, Specialization, Phone Number, Email, Work Schedule
+
+- **Department**: DepartmentID (PK), Department Name, Department Head
+
+- **Appointment**: AppointmentID (PK), PatientID (FK), DoctorID (FK), Appointment Date, Appointment Time, Reason for Visit, Additional Notes
+
+- **MedicalRecord**: MedicalRecordID (PK), PatientID (FK), DoctorID (FK), Diagnoses, Prescribed Medications, Treatments, Test Results, Additional Notes
+
+- **Billing**: BillingID (PK), AppointmentID (FK), Amount, Payment Date, Payment Method, Payment Status
+
 ...
 
-## Relationships and Constraints:
-- Relationship1 (Cardinality, Participation)
-- Relationship2 (Cardinality, Participation)
+## Relationships and Constraints:Here is the section in your requested format:
+
+- **Patient — "Has" — Appointment**
+ *(Cardinality: 1:M, Participation: Total on Appointment side)*
+
+- **Doctor — "Attends" — Appointment**  
+  *(Cardinality: 1:M, Participation: Total on Appointment side)*
+
+- **Department — "Belongs To" — Doctor**  
+  *(Cardinality: 1:M, Participation: Total on Doctor side)*
+
+- **Appointment — "Generates" — Billing**  
+  *(Cardinality: 1:1, Participation: Total on both sides)*
+
+- **Patient — "Has" — MedicalRecord**  
+  *(Cardinality: 1:M, Participation: Total on MedicalRecord side)*
+
+- **Doctor — "Writes" — MedicalRecord**  
+  *(Cardinality: 1:M, Participation: Total on MedicalRecord side)*
+
+- **Department — "Supervises" — Appointment**  
+  *(Cardinality: 1:M, Participation: Optional on Appointment side)*
 ...
 
 ## Extension (Prerequisite / Billing):
-- Explain how you modeled prerequisites or billing.
+Billing is modeled as a separate entity linked via a 1:1 relationship to Appointment, ensuring that each appointment has one and only one corresponding billing entry. It captures payment details such as amount, method, date, and status to support financial tracking and insurance processing.
 
-## Design Choices:
-Brief explanation of why you chose certain entities, relationships, and assumptions
+## Design Choices:Entities were selected based on real-world objects involved in hospital workflows.
+In designing the hospital database, the relationships were structured to support normalization, reduce redundancy, and provide flexibility for querying. Each relationship reflects a logical real-world connection, and the cardinality and participation constraints were defined based on how entities interact with one another. Billing was modeled as a separate entity to maintain a clear separation of financial data, ensuring precise tracking of payments and appointments. Additionally, the inclusion of department supervision over appointments reflects real-life administrative oversight, enhancing the completeness and reliability of the database model.
 
-## RESULT
+## RESULT:
+The ER diagram for the Hospital Database was successfully created, modeling key entities like Patient, Doctor, Appointment, and Billing. It includes correct relationships and constraints, reflecting the billing process. This exercise demonstrated the practical use of ER modeling for designing structured databases.
